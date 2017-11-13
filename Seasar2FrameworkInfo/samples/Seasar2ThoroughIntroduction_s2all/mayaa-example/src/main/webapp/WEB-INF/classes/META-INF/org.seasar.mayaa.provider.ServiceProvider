@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="Shift_JIS"?>
+<!DOCTYPE provider
+    PUBLIC "-//The Seasar Foundation//DTD Mayaa Provider 1.0//EN"
+    "http://mayaa.seasar.org/dtd/mayaa-provider_1_0.dtd">
+<provider>
+    <engine>
+        <parameter name="defaultSpecification" value="/WEB-INF/view/default.mayaa"/>
+    </engine>
+<!--
+    <templateBuilder
+            class="org.seasar.mayaa.impl.builder.TemplateBuilderImpl">
+        <resolver class="org.seasar.mayaa.impl.builder.injection.MetaValuesSetter"/>
+        <resolver class="org.seasar.mayaa.impl.builder.injection.ReplaceSetter"/>
+        <resolver class="org.seasar.mayaa.impl.builder.injection.RenderedSetter"/>
+        <resolver class="org.seasar.mayaa.impl.builder.injection.InsertSetter"/>
+        <resolver class="org.seasar.mayaa.impl.builder.injection.InjectAttributeInjectionResolver"/>
+        <resolver class="org.seasar.mayaa.impl.builder.injection.EqualsIDInjectionResolver">
+            <parameter name="reportUnresolvedID" value="true"/>
+            <parameter name="reportDuplicatedID" value="true"/>
+        </resolver>
+        <resolver class="org.seasar.mayaa.impl.builder.injection.XPathMatchesInjectionResolver"/>
+        <parameter name="outputTemplateWhitespace" value="true"/>
+        <parameter name="outputMayaaWhitespace" value="false"/>
+        <parameter name="optimize" value="true"/>
+    </templateBuilder>
+-->
+ </provider>

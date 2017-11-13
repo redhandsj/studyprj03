@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+  xmlns:s="http://sastruts.seasar.org">
+	<m:write m:id="title" value="${title} - SAStruts + Mayaaサンプル" m:replace="false"/>
+	<m:insert m:id="content" name="content" />
+
+	<s:link m:id="echo" href="/echo/">エコーアプリケーション</s:link>
+	<s:link m:id="basic" href="/basic/">基本処理</s:link>
+	<s:link m:id="jstl" href="/jstl/">JSTLによる基本処理</s:link>
+	<s:link m:id="component" href="/component/">コンポーネント</s:link>
+</m:mayaa>

@@ -1,0 +1,9 @@
+#Wed Nov 04 11:45:06 JST 2009
+DaoType=None
+DefaultResourcePath=/portlet-example/src/main/resources
+DefaultRootPackage=org.seasar.sastruts.example.portlet
+DefaultSrcPath=/portlet-example/src/main/java
+ServletPath=portlet-example
+ViewType=SA-Struts
+WebContentsRoot=src/main/webapp
+eclipse.preferences.version=1

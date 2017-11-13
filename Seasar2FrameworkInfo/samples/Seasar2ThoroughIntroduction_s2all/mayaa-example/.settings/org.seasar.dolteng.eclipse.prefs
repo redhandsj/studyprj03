@@ -1,0 +1,9 @@
+#Mon Nov 02 00:30:05 JST 2009
+DaoType=None
+DefaultResourcePath=/mayaa-example/src/main/resources
+DefaultRootPackage=org.seasar.sastruts.example.mayaa
+DefaultSrcPath=/mayaa-example/src/main/java
+ServletPath=mayaa-example
+ViewType=SA-Struts+Mayaa
+WebContentsRoot=src/main/webapp
+eclipse.preferences.version=1

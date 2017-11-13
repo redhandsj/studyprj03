@@ -1,0 +1,9 @@
+#Wed Oct 21 01:06:41 JST 2009
+DaoType=S2JDBC
+DefaultResourcePath=/mobylet-example/src/main/resources
+DefaultRootPackage=org.seasar.mobylet.example
+DefaultSrcPath=/mobylet-example/src/main/java
+ServletPath=mobylet-example
+ViewType=SA-Struts
+WebContentsRoot=src/main/webapp
+eclipse.preferences.version=1

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:s="http://sastruts.seasar.org"
+	xmlns:f="http://sastruts.seasar.org/functions"
+	xmlns:bean="http://jakarta.apache.org/struts/tags-bean"
+	xmlns:html="http://jakarta.apache.org/struts/tags-html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jstl/fmt"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	m:extends="/layout.html">
+
+	<m:beforeRender>
+		var title = 'JSTLによる基本処理';
+	</m:beforeRender>
+
+	<s:form m:xpath="form"/>
+	<html:text m:xpath="form/input[@type='text']" property="name"/>
+	<s:submit m:xpath="form/input[@type='submit']" property="index" value="送信"/>
+
+	<c:if m:id="test" test="${name &amp;&amp; name != ''}"/>
+	<c:out m:id="name" value="${name}" m:replace="false"/>
+
+	<c:forEach  m:id="userList" var="user" items="${userList}">
+		<a href="mailto:${user.mail}"><m:write value="${user.name}"/></a><br/>
+	</c:forEach>
+
+	<m:doRender m:id="content" name="content" />
+
+</m:mayaa>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org">
+  <m:beforeRender>
+    var f = {
+      h: Packages.org.seasar.struts.taglib.S2Functions.h,
+      u: Packages.org.seasar.struts.taglib.S2Functions.u,
+      url: Packages.org.seasar.struts.taglib.S2Functions.url,
+    };
+  </m:beforeRender>
+</m:mayaa>

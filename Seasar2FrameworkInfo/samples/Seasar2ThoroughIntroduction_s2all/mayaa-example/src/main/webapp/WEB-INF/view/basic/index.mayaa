@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<m:mayaa xmlns:m="http://mayaa.seasar.org"
+	xmlns:s="http://sastruts.seasar.org"
+	xmlns:f="http://sastruts.seasar.org/functions"
+	xmlns:bean="http://jakarta.apache.org/struts/tags-bean"
+	xmlns:html="http://jakarta.apache.org/struts/tags-html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:fmt="http://java.sun.com/jstl/fmt"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	m:extends="/layout.html">
+
+	<m:beforeRender>
+		var title = '基本処理';
+	</m:beforeRender>
+
+	<m:echo m:id="link">
+		<m:attribute name="href" value="http://www.google.co.jp/" />
+	</m:echo>
+
+	<s:form m:xpath="form"/>
+	<html:text m:xpath="form/input[@type='text']" property="name"/>
+	<s:submit m:xpath="form/input[@type='submit']" property="index" value="送信"/>
+
+	<m:if m:id="test" test="${name &amp;&amp; name != ''}"/>
+	<m:echo m:id="name">${f.h(name)}</m:echo>
+
+	<!-- m:forを使ったループ -->
+	<m:for m:id="userList"
+		init="${ var i = 0 }"
+		test="${ i &lt; userList.size() }"
+		after="${ i++ }" />
+	<m:echo m:id="mail">
+		<m:attribute name="href" value="mailto:${userList.get(i).mail}" />
+	</m:echo>
+	<m:write m:id="userName" value="${userList.get(i).name}" />
+	<m:null m:id="dummy" />
+
+	<!-- m:forEachを使ったループ
+	<m:forEach m:id="userList" items="${userList}" var="user" />
+	<m:echo m:id="mail">
+		<m:attribute name="href" value="mailto:${user.mail}" />
+	</m:echo>
+	<m:write m:id="userName" value="${user.name}" />
+	<m:null m:id="dummy" />
+	-->
+
+	<m:write m:xpath="span[@class='hello']" value="Hello Mayaa!!" />
+
+	<m:doRender m:id="content" name="content" />
+
+</m:mayaa>

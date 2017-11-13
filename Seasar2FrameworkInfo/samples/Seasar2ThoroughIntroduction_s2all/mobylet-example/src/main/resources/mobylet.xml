@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mobylet>
+	<initializers>
+		<chain>org.mobylet.core.initializer.impl.MobyletInitializerImpl</chain>
+	</initializers>
+	<default>
+		<contentType>XHTML</contentType>
+	</default>
+	<device>
+		<basedir>device/</basedir>
+	</device>
+	<emoji>
+		<basedir>emoji/</basedir>
+		<imagePath>/mobylet-example/mobylet-emoji</imagePath>
+	</emoji>
+	<cssExpand>true</cssExpand>
+</mobylet>

@@ -27,6 +27,14 @@
     instance="singleton">
     <!-- 明示的に指定 -->
     <property name="messageTarget">messageTarget</property>
+    <!-- まずは、コンストラクタインジェクション -->
+    <arg>"これはコンストラクタの引数にわたる"</arg>
+
+    <property name="injectStr">"これはセッターの時に渡す"</property>
+    <!-- 初期化時に呼び出すメソッド指定 -->
+    <initMethod name="init" />
+    <!-- 破棄時に呼び出すメソッド指定 -->
+    <destroyMethod name="dispose" />
   </component>
 
 

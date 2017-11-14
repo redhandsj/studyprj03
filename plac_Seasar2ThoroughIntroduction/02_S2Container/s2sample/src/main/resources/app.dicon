@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN"
+	"http://www.seasar.org/dtd/components24.dtd">
+<components>
+  <include path="convention.dicon"/>
+  <include path="aop.dicon"/>
+
+  <!--
+    コンポーネント名
+    クラス名
+    ライフサイクル
+   -->
+
+  <!--
+  ここを変更する事でコンポーネントの差し替えが可能
+  <component name="messageTarget"
+    class="s2container.helloworld.DefaultMessageTarget"
+    instance="singleton"/>
+   -->
+  <component name="messageTarget"
+    class="s2container.helloworld.SeasarMessageTarget"
+    instance="singleton">
+  </component>
+
+  <component name="messageProvider"
+    class="s2container.helloworld.HelloMessageProvider"
+    instance="singleton">
+    <!-- 明示的に指定 -->
+    <property name="messageTarget">messageTarget</property>
+  </component>
+
+
+</components>

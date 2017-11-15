@@ -17,6 +17,27 @@
     class="s2container.helloworld.DefaultMessageTarget"
     instance="singleton"/>
    -->
+
+  <!-- S2AOPのテスト -->
+  <component class="java.util.Date">
+    <aspect pointcut="get.*">aop.traceInterceptor</aspect>
+  </component>
+
+  <!-- インターセプト -->
+  <component name="loggingInterceptor"
+    class="s2container.helloworld.interceptor.LoggingInterceptor" />
+  <component name="methodCacheInterceptor"
+    class="s2container.helloworld.interceptor.MethodCacheInterceptor"
+    instance="singleton"/>
+
+
+
+  <!-- インターセプタのグループ化 -->
+  <component name="Chain" class="org.seasar.framework.aop.interceptors.InterceptorChain">
+    <initMethod name="add"><arg>loggingInterceptor</arg></initMethod>
+    <!-- <initMethod name="add"><arg>methodCacheInterceptor</arg></initMethod> -->
+  </component>
+
   <component name="messageTarget"
     class="s2container.helloworld.SeasarMessageTarget"
     instance="singleton">
@@ -25,6 +46,10 @@
   <component name="messageProvider"
     class="s2container.helloworld.HelloMessageProvider"
     instance="singleton">
+    <!-- インターセプターの設定 -->
+    <!-- <aspect>loggingInterceptor</aspect> -->
+    <aspect>Chain</aspect>
+
     <!-- 明示的に指定 -->
     <property name="messageTarget">messageTarget</property>
     <!-- まずは、コンストラクタインジェクション -->

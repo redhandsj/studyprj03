@@ -27,6 +27,10 @@ public class HelloMessageProvider implements IMessageProvider {
 	 */
 	public HelloMessageProvider(String str){
 		System.out.println(this.getClass().getName() + " : str");
+
+		// インターセプトテスト
+		this.test();
+
 	}
 	@Override
 	public void setMessageTarget(IMessageTarget messageTarget) {
@@ -44,4 +48,10 @@ public class HelloMessageProvider implements IMessageProvider {
 	public void dispose() {
 		System.out.println(this.getClass().getName() + "dispose()");
 	}
+
+//	@SimpleTrace
+	private void test() {
+		System.out.println(this.getClass().getName() + "testing.!!!!");
+	}
+
 }

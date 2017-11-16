@@ -161,6 +161,12 @@ autoBinding → 自動バインディング設定
 
 
 ■ 2.6.6 インタータイプ
+ - PropertyInterType
+   ⇒ PropertyInterTypeDto作成
+
+
+
+
 
 ############ P.84 #######################
 

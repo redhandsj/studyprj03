@@ -5,6 +5,10 @@
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 	<name>s2sample</name>
+
+    <properties>
+      <org.seasar.container.version>2.4.6</org.seasar.container.version>
+    </properties>
 	<build>
 		<sourceDirectory>src/main/java</sourceDirectory>
 		<outputDirectory>target/classes</outputDirectory>
@@ -137,12 +141,17 @@
         <dependency>
             <groupId>org.seasar.container</groupId>
             <artifactId>s2-extension</artifactId>
-            <version>2.4.46</version>
+            <version>${org.seasar.container.version}</version>
         </dependency>
         <dependency>
             <groupId>org.seasar.container</groupId>
             <artifactId>s2-framework</artifactId>
-            <version>2.4.46</version>
+            <version>${org.seasar.container.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.seasar.container</groupId>
+            <artifactId>s2-tiger</artifactId>
+            <version>${org.seasar.container.version}</version>
         </dependency>
     </dependencies>
 </project>

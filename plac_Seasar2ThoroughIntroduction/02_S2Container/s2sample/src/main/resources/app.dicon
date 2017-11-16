@@ -62,5 +62,14 @@
     <destroyMethod name="dispose" />
   </component>
 
+  <!-- インタータイプ -->
+  <component class="s2container.helloworld.dto.impl.PropertyInterTypeDto">
+    <interType>
+      <component class="org.seasar.framework.aop.PropertyInterType" />
+    </interType>
+  </component>
+
+
+
 
 </components>

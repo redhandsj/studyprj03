@@ -1,5 +1,5 @@
 ★Seasar2_徹底入門.pdf
- - (CHAPTER 11) SAStruts と S2JDBC の連携 (P. - )
+ - (CHAPTER 11) SAStruts と S2JDBC の連携 (P.434 - 451
 しおり　：　
 URL　:　
 

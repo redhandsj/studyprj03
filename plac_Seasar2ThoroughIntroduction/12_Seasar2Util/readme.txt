@@ -1,5 +1,5 @@
 ★Seasar2_徹底入門.pdf
- - (CHAPTER 12) Seasar2 が提供するユーティリティ  (P. - )
+ - (CHAPTER 12) Seasar2 が提供するユーティリティ  (P.452 - 480)
 しおり　：　
 URL　:　
 

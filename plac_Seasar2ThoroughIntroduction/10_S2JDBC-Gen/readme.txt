@@ -1,5 +1,5 @@
 ★Seasar2_徹底入門.pdf
- - (CHAPTER 10) S2JDBC-Gen (P. - )
+ - (CHAPTER 10) S2JDBC-Gen (P.379 - 433)
 しおり　：　
 URL　:　
 

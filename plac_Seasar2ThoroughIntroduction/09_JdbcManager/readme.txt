@@ -1,5 +1,5 @@
 ★Seasar2_徹底入門.pdf
- - (CHAPTER 09) JdbcManager (P. - )
+ - (CHAPTER 09) JdbcManager (P.335 - 378)
 しおり　：　
 URL　:　
 

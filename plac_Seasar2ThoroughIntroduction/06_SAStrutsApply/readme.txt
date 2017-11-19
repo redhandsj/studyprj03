@@ -1,5 +1,5 @@
 ★Seasar2_徹底入門.pdf
- - (CHAPTER 06) SAStruts 応用編 (P. - )
+ - (CHAPTER 06) SAStruts 応用編 (P.257 - 299)
 しおり　：　
 URL　:　
 

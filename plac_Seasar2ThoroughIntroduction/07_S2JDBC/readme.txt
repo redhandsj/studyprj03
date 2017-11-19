@@ -1,5 +1,5 @@
 ★Seasar2_徹底入門.pdf
- - (CHAPTER 07) S2JDBC 入門 (P. - )
+ - (CHAPTER 07) S2JDBC 入門 (P.300 - 316)
 しおり　：　
 URL　:　
 

@@ -1,14 +1,93 @@
 ★Seasar2_徹底入門.pdf
- - (CHAPTER 04) アクションとアクションフォーム (P. - )
+ - (CHAPTER 04) アクションとアクションフォーム (P.149 - 188)
 しおり　：　
 URL　:　
 
 ★ 2017/11/13(月)に、新規作成
 
 
+
 //==========================================================================================================
 // 4.1 　アクション
 //==========================================================================================================
+03_SAStrutsGettingStarted/sastruts で解説
+
+■4.1.1 実行メソッドとURLとのマッピング
+ - １ユースケース＝１アクション
+ - /sastruts/src/main/java/org/ex/action/EchoAction.java
+
+■4.1.2 URLパターン
+ - http://localhost:8080/appname/employee/list
+      ↓
+   public class EmployeeAction {
+     @Excute(urlPattern="list")
+     public String index() {
+       :
+     }
+   }
+
+ - http://localhost:8080/appname/employee/detail/10
+      ↓
+   public class EmployeeAction {
+     @Excute(urlPattern="detail/{empId}")
+     public String index() {
+       :
+     }
+   }
+
+■4.1.3 リクエストパラメータの取得
+ - /sastruts/src/main/java/org/ex/form/EchoForm.java
+
+
+■4.1.4 アクションからJSPへの値の受け渡し
+ - アクションのpublicフィールドをsetAttribute()
+ - また、publicなgetterがある場合に意図しないタイミングで呼ばれる場合があるので注意
+ ⇒ /sastruts/src/main/java/org/ex/action/SampleAction.java
+ ⇒ /sastruts/src/main/webapp/WEB-INF/view/sample/index.jsp
+
+
+■4.1.5 アクションの粒度
+ - URL設計とアクションフォーム
+ - アクションフォームを共有できる処理
+
+■4.1.6 画面遷移
+ - アクションが返す値
+   - 遷移先のJSP
+     - 先頭「/」なら絶対パス、それ以外は相対パス
+   - 別のアクション名（フォワード）
+   - アクション名に「?redirect=true」を付与（リダイレクト）
+     - PRG(Post-Redirect-Get)パターン
+       - フォーム二重送信防止
+         → P.157 の図
+
+■4.1.7 HTTPセッションの利用
+ - dto パッケージで、@Componentの session となる（セッションスコープで管理）
+ - セッションに格納する場合、「java.io.Serializable」インターフェイスを実装
+
+  // ログインユーザ情報
+  @Component(instance = InstanceTyp.SESSION)
+  public class UserDto implements Serializable {
+    private static final long serialVersionUID = 1L;
+    public long userId;
+    public String userName;
+  }
+
+  // アクション例
+  public class SampleAction{
+    @Resouce
+    protected UserDto userDto;
+  }
+
+ ⇒　/sastruts/src/main/java/org/ex/dto/UserDto.java
+ ⇒　/sastruts/src/main/java/org/ex/action/RegistAction.java
+
+■4.1.8 Servlet API を利用する
+ ⇒　/sastruts/src/main/java/org/ex/action/RegistAction.java
+    HttpSessionを追加
+
+############ P.159 #######################
+
+
 
 //==========================================================================================================
 // 4.2　 アクションフォーム
@@ -36,6 +115,11 @@ URL　:　
 //==========================================================================================================
 // 未整頓メモ
 //==========================================================================================================
+★ PRG(Post-Redirect-Get)パターン
+ - フォームデータをPOSTした後、リダイレクトせずに画面を表示し、ブラウザを再読み込みすると、もう一度POSTしよ
+   うとしてしまいます。しかし、POST後にリダイレクトして画面を表示するようにすれば、ブラウザを再読み込みして
+   も送信されるのはGETリクエストなので、フォームデータの二重送信が防げるというものです。
+
 
 
 //==========================================================================================================

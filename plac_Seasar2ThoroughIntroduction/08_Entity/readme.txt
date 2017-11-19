@@ -1,5 +1,5 @@
 ★Seasar2_徹底入門.pdf
- - (CHAPTER 08) エンティティ (P. - )
+ - (CHAPTER 08) エンティティ (P.317 - 334)
 しおり　：　
 URL　:　
 

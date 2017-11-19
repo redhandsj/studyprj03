@@ -1,5 +1,5 @@
 ★Seasar2_徹底入門.pdf
- - (CHAPTER 02) S2Container (P.038 - 126)
+ - (CHAPTER 02) S2Container (P.038 - 127)
 しおり　：　
 URL　:　
 
@@ -163,32 +163,136 @@ autoBinding → 自動バインディング設定
 ■ 2.6.6 インタータイプ
  - PropertyInterType
    ⇒ PropertyInterTypeDto作成
+   - @Propertyでもgetter/setterの調整可能
+ - InterTypeChain
+   - 複数のインタータイプをグループ化する
 
+■ 2.6.7 独自インタータイプ
+ - HelloInterType
+   ⇒ HelloInterType
+	// InterTypeが適用されたコンポーネント
+	private HelloWorld helloWorld;
+   ※ 実際は省略
 
-
-
-
-############ P.84 #######################
+■ 2.6.8 AOPによるトランザクション制御
+ - P.89 の表
+ - P.90 の図 !!!!!!!!! 超重要 !!!!!!!!!!
+ - 例外はスローしたいが、トランザクションはコミットしたい
+  <!-- トランザクション -->
+  <component name="requiredTx" class="org.seasar.extendsion.tx.RequiredInterceptor">
+    <!-- 例外はスルーするが、コミットは行うものを登録 -->
+    <initMethod>
+      <arg>@org.seasar.exsample.exception.CommitException@class</arg>
+    </initMethod>
+  </component>
 
 
 //==========================================================================================================
 // 2.7　 自動登録
 //==========================================================================================================
+■ 2.7.1 コンポーネントの自動登録
+ - 基本形
+  <!-- コンポーネントの自動登録（ファイルシステムからクラスを検索） -->
+  <component class="org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister">
+    <!-- 自動登録するコンポーネントのライフサイクルはprototype -->
+	<property name="instanceDef">@org.seasar.framework.container.deployer.InstanceDefFactory@PROTOTYPE</property>
+    <!-- 登録するコンポーネントへの自動バインディングは行わない -->
+    <property name="autoBindingDef">@org.seasar.framework.container.assembler.AutoBinding</property>
+    <!-- クラス名からコンポーネント名を決定するクラスを指定 -->
+    <property name="autoNaming"></property>
+    <!-- org.seasar.exsample.Mainを起点に検索 -->
+    <initMethod name="addReferenceClass"><arg>@org.seasar.exsample.Main@class</arg></initMethod>
+    <!-- org.seasar.exsample.component パッケージ配下でImpl で終わるクラスを自動登録 -->
+    <initMethod name="addClassPattern">
+      <arg>"org.seasar.exsample.component"</arg>
+      <arg>".*Impl"</arg>
+    </initMethod>
+    <!-- org.seasar.exsample.component パッケージ配下でImpl で終わるクラスを自動登録 -->
+    <initMethod name="addClassPattern">
+      <arg>"org.seasar.exsample.component"</arg>
+      <arg>"get*"</arg>
+    </initMethod>
+    <!-- org.seasar.exsample.component パッケージ配下でgetで始まるクラスを自動登録しない -->
+    <initMethod name="addignoreClassPattern">
+      <arg>"org.seasar.exsample.component"</arg>
+      <arg>"get*"</arg>
+    </initMethod>
+  </component>
+ - ファイルシステムからクラスを検索してコンポーネント
+  <component class="org.seasar.framework.container.autoregister.FileSystemComponentAutoRegister">
+ - JARファイルからクラスを検索してコンポーネント
+  <component class="org.seasar.framework.container.autoregister.JarComponentAutoRegister">
 
 
 
+■ 2.7.2 自動登録されるコンポーネントのコンポーネント名
+ - クラス名のパッケージ部分除く
+ - クラス名の末尾の「Impl」「Bean」は削除
+ - クラス名の先頭を小文字にする
+  <component class="org.seasar.framework.container.autoregister.DefaultAutoNaming">
+    <!-- クラス名の先頭を小文字にする？ -->
+	<property name="decapitalize">true</property>
+	<!-- コンポーネント名の末尾から削除する文字列を指定 -->
+    <initMethod name="addignoreClassSuffix">
+      <arg>"suffix"</arg>
+    </initMethod>
+	<!-- 特定のクラスにネーミングルールに合致しないコンポーネント名を付与したい場合 -->
+    <initMethod name="setCustomizedName">
+      <arg>"fqcn"</arg>
+      <arg>"name"</arg>
+    </initMethod>
+    <!-- コンポーネント名を置換する為のルールを追加 -->
+    <initMethod name="addREplaceRule">
+      <arg>"regex"</arg>
+      <arg>"replacement"</arg>
+    </initMethod>
+  </component>
 
+■ 2.7.3 アスペクトの自動登録
+ - <component class="org.seasar.framework.container.autoregister.ComponentAutoRegister">
+   よりも
+   <component class="org.seasar.framework.container.autoregister.AspectAutoRegister">
+   を先に書く必要がある
 
+  <!-- クラスのパターンを指定してアスペクトを自動登録する -->
+  <component class="org.seasar.framework.container.autoregister.AspectAutoRegister">
+    <!-- 適用するインターセプタ -->
+	<property name="interceptor"></property>
+	<!-- インターセプタ適用箇所 -->
+	<property name="pointcut"></property>
+	<!-- 自動登録するクラスのパターン -->
+    <initMethod name="addClassPattern">
+      <arg>"org.seasar.exsample.component"</arg>
+      <arg>".*Impl"</arg>
+    </initMethod>
+	<!-- 自動登録しないクラスのパターン -->
+    <initMethod name="addignoreClassPattern">
+      <arg>"org.seasar.exsample.component"</arg>
+      <arg>".*Impl"</arg>
+    </initMethod>
+  </component>
 
+  <!-- 指定したインターフェイスを実装したクラスに対してアスペクトを自動登録 -->
+  <component class="org.seasar.framework.container.autoregister.InterfaceAspectAutoRegister">
+    <!-- 適用するインターセプタを指定 -->
+    <property name="intercenpor"></property>
+    <!-- インターセプタを適用するインターフェイスを指定 -->
+    <property name="targetInterface"></property>
+  </component>
 
 
 //==========================================================================================================
 // 2.8　 アノテーション
 //==========================================================================================================
+ - P.99 表
 
 //==========================================================================================================
 // 2.9　 Web アプリケーションでの利用
 //==========================================================================================================
+
+############ P.103 #######################
+
+
 
 //==========================================================================================================
 // 2.10　環境ごとの切り替え

@@ -30,8 +30,6 @@
     class="s2container.helloworld.interceptor.MethodCacheInterceptor"
     instance="singleton"/>
 
-
-
   <!-- インターセプタのグループ化 -->
   <component name="Chain" class="org.seasar.framework.aop.interceptors.InterceptorChain">
     <initMethod name="add"><arg>loggingInterceptor</arg></initMethod>
@@ -65,10 +63,31 @@
   <!-- インタータイプ -->
   <component class="s2container.helloworld.dto.impl.PropertyInterTypeDto">
     <interType>
-      <component class="org.seasar.framework.aop.PropertyInterType" />
+      <component class="org.seasar.framework.aop.intertype.PropertyInterType" />
     </interType>
   </component>
 
+  <!-- 独自インタータイプ -->
+  <component class="org.seasar.exsample.s2Container.aop.HelloWorld">
+    <interType>
+      <component class="org.seasar.exsample.s2Container.aop.HelloInterType" />
+    </interType>
+  </component>
+
+  <!-- コンポーネントの自動登録 -->
+  <component class="org.seasar.framework.container.autoregister.ComponentAutoRegister">
+    <!-- 自動登録するコンポーネントのライフサイクルはprototype -->
+	<property name="instanceDef">@org.seasar.framework.container.deployer.InstanceDefFactory@PROTOTYPE</property>
+    <!-- 登録するコンポーネントへの自動バインディングは行わない -->
+    <property name="autoBindingDef">@org.seasar.framework.container.assembler.AutoBinding</property>
+    <!-- org.seasar.exsample.Mainを起点に検索 -->
+    <initMethod name="addReferenceClass"><arg>@org.seasar.exsample.Main@class</arg></initMethod>
+    <!-- org.seasar.exsample.component パッケージ配下でImpl で終わるクラスを自動登録 -->
+    <initMethod name="addClassPattern">
+      <arg>"org.seasar.exsample.component"</arg>
+      <arg>".*Impl"</arg>
+    </initMethod>
+  </component>
 
 
 

@@ -148,10 +148,18 @@
             <artifactId>s2-framework</artifactId>
             <version>${org.seasar.container.version}</version>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.seasar.container</groupId>
             <artifactId>s2-tiger</artifactId>
             <version>${org.seasar.container.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>ejb3-persistence</artifactId>
+            <version>3.3.2.Beta1</version>
+            <type>pom</type>
+        </dependency>
+         -->
     </dependencies>
 </project>

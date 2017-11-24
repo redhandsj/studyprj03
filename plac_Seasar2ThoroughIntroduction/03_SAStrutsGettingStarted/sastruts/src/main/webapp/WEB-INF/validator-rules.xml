@@ -40,7 +40,7 @@
 
    errors.minbytelength={0} can not be less than {1} bytes.
    errors.maxbytelength={0} can not be greater than {1} bytes.
-   
+
    Note: Starting in Struts 1.2.0 the default javascript definitions have
          been consolidated to commons-validator. The default can be overridden
          by supplying a <javascript> element with a CDATA section, just as
@@ -322,7 +322,7 @@
                        javax.servlet.http.HttpServletRequest"
               depends=""
                   msg="errors.maxbytelength"/>
-                  
+
      <validator name="longRange"
             classname="org.seasar.struts.validator.S2FieldChecks"
                method="validateLongRange"
@@ -334,6 +334,20 @@
                        javax.servlet.http.HttpServletRequest"
               depends="long"
                   msg="errors.range"/>
+
+      <!-- Original Check -->
+      <validator name="requiredArray"
+            classname="org.ex.validator.ArrayChecks"
+               method="validateRequiredArray"
+         methodParams="java.lang.Object,
+                       org.apache.commons.validator.ValidatorAction,
+                       org.apache.commons.validator.Field,
+                       org.apache.struts.action.ActionMessages,
+                       org.apache.commons.validator.Validator,
+                       javax.servlet.http.HttpServletRequest"
+              depends=""
+                  msg="errors.required"/>
+
 
      <!--
        This simply allows struts to include the validateUtilities into a page, it should

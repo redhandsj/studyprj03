@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 
 import org.ex.dto.UserDto;
 import org.ex.form.TourokuForm;
+import org.seasar.extension.jdbc.JdbcManager;
+import org.seasar.framework.container.SingletonS2Container;
 import org.seasar.struts.annotation.ActionForm;
 import org.seasar.struts.annotation.Execute;
 
@@ -31,6 +33,9 @@ public class TourokuAction {
 	 */
 	@Execute(validator=false, reset="reset")
 	public String index() {
+		// S2ContainerからJdbcManagerを取得
+		JdbcManager jdbcManager = SingletonS2Container.getComponent(JdbcManager.class);
+
 		// セッションに値を入力
 		UserDto userDto = new UserDto();
 		userDto.userId = 1000;
